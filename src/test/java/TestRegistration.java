@@ -37,11 +37,12 @@ public class TestRegistration extends TestingSetup {
         registration.acceptPrivacyPolicy(accept);
         registration.clickOnRegistrationButton();
 
-        Thread.sleep(1000);
+        Thread.sleep(2000);
         boolean messageDisplayed = registration.isMessageDisplayed();
         String expectedMessage = "Az aktiváláshoz szükséges azonosító linket elküldtük a megadott e-mail címre.\n" +
                 "Az aktiváláshoz kattints rá, vagy másold a böngésző címsorába.";
         String actualMessage = registration.getMessage();
+
         Assertions.assertTrue(messageDisplayed);
         Assertions.assertEquals(expectedMessage, actualMessage);
 
