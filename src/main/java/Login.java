@@ -1,6 +1,5 @@
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 
 public class Login extends PageBase{
     private final String url = "http://forditasokk.probaljaki.hu/felhasznalo/bejelentkezes.php";
@@ -8,32 +7,34 @@ public class Login extends PageBase{
     private final By password = By.xpath("//input[@type=\"password\"]");
     private final By button = By.name("bejelentkezes");
     private final By errorMessage = By.className("hiba_uzi");
+    private final By loggedInUsername = By.id("felhasznalonev");
 
     public Login(WebDriver driver) {
         super(driver);
     }
 
     public void navigateToPage(){
-        navigateToPage(url);
+        webDriver.navigate().to(url);
     }
 
     public void enterUsername(String usernameInput){
-        userInput(username, usernameInput);
+        webDriver.findElement(username).sendKeys(usernameInput);
     }
+
     public void enterPassword(String passwordInput){
-        userInput(password, passwordInput);
+        webDriver.findElement(password).sendKeys(passwordInput);
     }
 
     public void clickOnButton(){
-        clickOnIt(button);
+        webDriver.findElement(button).click();
     }
 
     public String getErrorMessage(){
-        return getData(errorMessage);
+        return webDriver.findElement(errorMessage).getText();
     }
 
-    public WebElement ErrorMessage(){
-        return getElement(errorMessage);
+    public String getLoggedInUsername(){
+        return webDriver.findElement(loggedInUsername).getText();
     }
 
 }

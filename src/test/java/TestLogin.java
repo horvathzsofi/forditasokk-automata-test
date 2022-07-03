@@ -19,7 +19,7 @@ public class TestLogin extends TestingSetup {
 
     @Test
     public void correctFailedLoginMessage(){
-        fillForm("Sajt", "Alma");
+        fillForm("veloje", "asd");
         String actualMessage = login.getErrorMessage();
         String expectedMessage = "Nem megfelelő felhasználónév vagy jelszó.";
         Assertions.assertEquals(expectedMessage, actualMessage);
@@ -27,8 +27,10 @@ public class TestLogin extends TestingSetup {
 
     @Test
     public void displayFailedLoginMessage(){
-        fillForm("asd", "asdhasjhdksj");
-        boolean actual = login.ErrorMessage().isDisplayed();
-        Assertions.assertTrue(actual);
+        String username = "Veloje";
+        String password = "a";
+        fillForm(username, password);
+        String actual = login.getLoggedInUsername();
+        Assertions.assertEquals(username, actual);
     }
 }
