@@ -7,7 +7,7 @@ public class Registration extends PageBase{
     private final By email = By.xpath("//*[@name=\"email\"]");
     private final By password = By.xpath("//*[@type=\"password\"]");
     private final By privacyPolicyCheckbox = By.id("ASZF");
-    private final By message = By.className("siker_uzi");
+    private final By message = By.className("uzenet_van");
     private final By registrationButton = By.xpath("//*[@name=\"regisztral\"]");
     private final By errorMessageForUsername = By.xpath("//*[@class=\"felhasznalonev\"]//span");
     private final By errorMessageForEmail = By.xpath("//*[@id=\"email\"]//span");

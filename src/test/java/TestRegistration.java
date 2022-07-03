@@ -38,6 +38,7 @@ public class TestRegistration extends TestingSetup {
         registration.clickOnRegistrationButton();
 
         Thread.sleep(2000);
+        Allure.addAttachment("Képernyőkép a sikeres regisztrációról", new ByteArrayInputStream(((TakesScreenshot) webDriver).getScreenshotAs(OutputType.BYTES)));
         boolean messageDisplayed = registration.isMessageDisplayed();
         String expectedMessage = "Az aktiváláshoz szükséges azonosító linket elküldtük a megadott e-mail címre.\n" +
                 "Az aktiváláshoz kattints rá, vagy másold a böngésző címsorába.";
