@@ -26,7 +26,7 @@ public class TestRegistration extends TestingSetup {
     @Description("Sikeres regisztráció, mivel mindegyik beviteli mező valid adatot tartalmaz (DT-1 alapján)")
     @Severity(SeverityLevel.CRITICAL)
     public void successfulRegistration() throws InterruptedException {
-        String username = "Veloje123";
+        String username = "bakipo3967";
         String email = "bakipo3967@jrvps.com";
         String password = "a";
         boolean accept = true;
