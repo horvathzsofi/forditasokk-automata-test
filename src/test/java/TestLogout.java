@@ -11,7 +11,6 @@ public class TestLogout extends TestingSetup{
     }
 
     @Test
-    @Disabled
     public void successfulLogout(){
 
     }

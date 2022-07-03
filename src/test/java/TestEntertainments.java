@@ -20,7 +20,6 @@ public class TestEntertainments extends TestingSetup {
      */
 
     @Test
-    @Disabled
     public void verifyThatAllEntertainmentsAreDisplayed(){
 
     }

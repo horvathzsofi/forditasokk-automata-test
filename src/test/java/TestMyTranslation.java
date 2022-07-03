@@ -12,7 +12,6 @@ public class TestMyTranslation extends TestingSetup{
 
 
     @Test
-    @Disabled
     public void deleteMyTranslation(){
 
     }

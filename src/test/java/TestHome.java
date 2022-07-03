@@ -17,7 +17,6 @@ public class TestHome extends TestingSetup{
      */
 
     @Test
-    @Disabled
     public void collectDataFromHomepage(){
 
     }

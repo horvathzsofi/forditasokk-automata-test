@@ -64,7 +64,6 @@ public class TestRegistration extends TestingSetup {
     @DisplayName("Sikertelen regisztráció")
     @Description("Már regisztrált felhasználónévvel és email címmel történő regisztráció a DT-12 alapján")
     @Severity(SeverityLevel.CRITICAL)
-    @Disabled
     public void unsuccessfulRegistration() {
         String username = "felhasznalo";
         String email = "demodezso@localhost";

@@ -11,13 +11,11 @@ public class TestMusics extends TestingSetup {
     }
 
     @Test
-    @Disabled
     public void addNewMusic(){
 
     }
 
     @Test
-    @Disabled
     public void modifyMusicDetails(){
         
     }

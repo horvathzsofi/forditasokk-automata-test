@@ -21,7 +21,6 @@ public class TestAlbums extends TestingSetup {
      */
 
     @Test
-    @Disabled
     public void checkingPaginationNextButton(){
 
     }

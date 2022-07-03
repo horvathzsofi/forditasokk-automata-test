@@ -3,15 +3,16 @@ import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
 
-public class TestArtists extends TestingSetup{
+public class TestArtists extends TestingSetup {
     Artists artists = null;
 
     @BeforeEach
-    public void createArtists(){
+    public void createArtists() {
         artists = new Artists(webDriver);
     }
 
-    /** TODO: Testing entering data repeatedly from data source on "Előadók" (Artist.Artists) page
+    /**
+     * TODO: Testing entering data repeatedly from data source on "Előadók" (Artist.Artists) page
      * Test steps:
      * 1. Navigate to website
      * 2. Click on "Előadó hozzáadása" (Add artist) link
@@ -22,10 +23,10 @@ public class TestArtists extends TestingSetup{
      * 7. Repeat the test steps from step 2 until there is no test data
      */
 
-    /*
+
     @ParameterizedTest
     @CsvFileSource(resources = "/artists.csv", numLinesToSkip = 1)
-    public void addArtistsRepeatedly(String artist, String entertainment){
+    public void addArtistsRepeatedly(String artist, String entertainment) {
     }
-     */
+
 }
