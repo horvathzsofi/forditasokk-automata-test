@@ -53,8 +53,8 @@ public class TestLogin extends TestingSetup {
         fillForm(username, password);
         String actualMessage = login.getErrorMessage();
         String expectedErrorMessage = "A fiókot még nem aktiválták. Nyissa meg e-mail fiókját és kattintson az aktiválás linkjére.";
-        Assertions.assertEquals(expectedErrorMessage, actualMessage);
         Allure.addAttachment("Képernyőkép a sikertelen bejelentkezésről inaktív fiókba", new ByteArrayInputStream(((TakesScreenshot) webDriver).getScreenshotAs(OutputType.BYTES)));
+        Assertions.assertEquals(expectedErrorMessage, actualMessage);
     }
 
 
