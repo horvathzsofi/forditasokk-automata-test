@@ -1,4 +1,3 @@
-import io.github.bonigarcia.wdm.WebDriverManager;
 import io.qameta.allure.Allure;
 import io.qameta.allure.Description;
 import io.qameta.allure.Feature;
@@ -11,56 +10,44 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.ByteArrayInputStream;
-import java.util.concurrent.TimeUnit;
 
 @Feature("Registration")
-public class TestRegistration {
+public class TestRegistration extends TestingSetup {
     Registration registration = null;
 
-  /*  @BeforeEach
+    @BeforeEach
     public void createRegistration() {
         registration = new Registration(webDriver);
     }
-*/
 
     @Test
     @DisplayName("Sikeres regisztráció")
     @Description("Sikeres regisztráció, mivel mindegyik beviteli mező valid adatot tartalmaz (DT-1 alapján)")
     @Severity(SeverityLevel.CRITICAL)
     public void successfulRegistration() throws InterruptedException {
-        WebDriverManager.chromedriver().setup();
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--no-sandbox");
-        options.addArguments("--incognito");
-        options.addArguments("--disable-dev-shm-usage");
-        options.addArguments("--disable-notifications");
-        options.addArguments("--disable-extensions");
-        options.addArguments("--headless");
-        options.addArguments("--window-size=1920,1080");
-        options.addArguments("start-maximized");
-
-        var webDriver = new ChromeDriver(options);
-        webDriver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-        webDriver.manage().window().maximize();
-
-        registration = new Registration(webDriver);
-
+        Logger logger = LoggerFactory.getLogger(TestRegistration.class);
+        logger.info("[successfulRegistration] method started.");
         String username = "bakipo3967";
         String email = "bakipo3967@jrvps.com";
         String password = "a";
         boolean accept = true;
         registration.navigateTo();
+        logger.info("[successfulRegistration] navigated to registration page.");
         registration.enterUsername(username);
+        logger.info("[successfulRegistration] entered username: " + username + ".");
         registration.enterEmail(email);
+        logger.info("[successfulRegistration] entered email: " + email + ".");
         registration.enterPassword(password);
         registration.acceptPrivacyPolicy(accept);
+        logger.info("[successfulRegistration] accepted Privacy policy: " + accept + ".");
         registration.clickOnRegistrationButton();
+        logger.info("[successfulRegistration] clicked on registration button.");
 
-        Thread.sleep(5000);
+        Thread.sleep(2000);
         Allure.addAttachment("Képernyőkép a sikeres regisztrációról", new ByteArrayInputStream(((TakesScreenshot) webDriver).getScreenshotAs(OutputType.BYTES)));
         boolean messageDisplayed = registration.isMessageDisplayed();
         String expectedMessage = "Az aktiváláshoz szükséges azonosító linket elküldtük a megadott e-mail címre.\n" +
@@ -69,13 +56,10 @@ public class TestRegistration {
 
         Assertions.assertTrue(messageDisplayed);
         Assertions.assertEquals(expectedMessage, actualMessage);
-
+        logger.info("[successfulRegistration] method finished.");
         Allure.addAttachment("Képernyőkép a sikeres regisztrációról", new ByteArrayInputStream(((TakesScreenshot) webDriver).getScreenshotAs(OutputType.BYTES)));
-
-        webDriver.quit();
     }
 
-    /*
     @Test
     @DisplayName("Sikertelen regisztráció")
     @Description("Már regisztrált felhasználónévvel és email címmel történő regisztráció a DT-12 alapján")
@@ -105,6 +89,4 @@ public class TestRegistration {
 
         Allure.addAttachment("Képernyőkép a sikertelen regisztrációról", new ByteArrayInputStream(((TakesScreenshot) webDriver).getScreenshotAs(OutputType.BYTES)));
     }
-
-     */
 }
