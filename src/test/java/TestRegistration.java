@@ -5,13 +5,10 @@ import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.io.ByteArrayInputStream;
 
@@ -29,7 +26,7 @@ public class TestRegistration extends TestingSetup {
     @Description("Sikeres regisztráció, mivel mindegyik beviteli mező valid adatot tartalmaz (DT-1 alapján)")
     @Severity(SeverityLevel.CRITICAL)
     public void successfulRegistration() throws InterruptedException {
-        String username = "bakipo3967";
+        String username = "Veloje";
         String email = "bakipo3967@jrvps.com";
         String password = "a";
         boolean accept = true;
@@ -52,6 +49,7 @@ public class TestRegistration extends TestingSetup {
 
         Allure.addAttachment("Képernyőkép a sikeres regisztrációról", new ByteArrayInputStream(((TakesScreenshot) webDriver).getScreenshotAs(OutputType.BYTES)));
     }
+
 
     @Test
     @DisplayName("Sikertelen regisztráció")

@@ -1,8 +1,18 @@
+import io.qameta.allure.Allure;
+import io.qameta.allure.Description;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 
+import java.io.ByteArrayInputStream;
+
+@Feature("Login")
 public class TestLogin extends TestingSetup {
     Login login = null;
 
@@ -19,19 +29,48 @@ public class TestLogin extends TestingSetup {
     }
 
     @Test
+    @DisplayName("Sikertelen bejelentkezés")
+    @Description("Bejelentkezés tesztelése hibás belépési adatokkal")
+    @Severity(SeverityLevel.CRITICAL)
     public void correctFailedLoginMessage(){
-        fillForm("veloje", "asd");
+        String username = "veloje";
+        String password = "asd";
+        fillForm(username, password);
         String actualMessage = login.getErrorMessage();
         String expectedMessage = "Nem megfelelő felhasználónév vagy jelszó.";
         Assertions.assertEquals(expectedMessage, actualMessage);
+        Allure.addAttachment("Képernyőkép a sikertelen bejelentkezésről", new ByteArrayInputStream(((TakesScreenshot) webDriver).getScreenshotAs(OutputType.BYTES)));
     }
 
+
     @Test
-    public void displayFailedLoginMessage(){
+    @DisplayName("Bejelentkezés inaktív fiókba")
+    @Description("Bejelentkezés valós belépési adatokkal, nem aktivált fiókba")
+    @Severity(SeverityLevel.BLOCKER)
+    public void loginWithoutActivatingUserProfile(){
         String username = "Veloje";
         String password = "a";
         fillForm(username, password);
+        String actualMessage = login.getErrorMessage();
+        String expectedErrorMessage = "A fiókot még nem aktiválták. Nyissa meg e-mail fiókját és kattintson az aktiválás linkjére.";
+        Assertions.assertEquals(expectedErrorMessage, actualMessage);
+        Allure.addAttachment("Képernyőkép a sikertelen bejelentkezésről inaktív fiókba", new ByteArrayInputStream(((TakesScreenshot) webDriver).getScreenshotAs(OutputType.BYTES)));
+    }
+
+
+    // in this case a preregistered user login will happen, so I could show you the login automation successfully
+    @Test
+    @DisplayName("Sikeres bejelentkezés")
+    @Description("Bejelentkezés tesztelése valós belépési adatokkal")
+    @Severity(SeverityLevel.CRITICAL)
+    public void successfulLogin() throws InterruptedException {
+        String username = "felhasznalo";
+        String password = "asd";
+        fillForm(username, password);
+        Thread.sleep(2000);
         String actual = login.getLoggedInUsername();
         Assertions.assertEquals(username, actual);
+        Allure.addAttachment("Képernyőkép a sikeres bejelentkezésről", new ByteArrayInputStream(((TakesScreenshot) webDriver).getScreenshotAs(OutputType.BYTES)));
     }
+
 }
