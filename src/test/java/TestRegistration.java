@@ -25,7 +25,7 @@ public class TestRegistration extends TestingSetup {
     @DisplayName("Sikeres regisztráció")
     @Description("Sikeres regisztráció, mivel mindegyik beviteli mező valid adatot tartalmaz (DT-1 alapján)")
     @Severity(SeverityLevel.CRITICAL)
-    public void successfulRegistration(){
+    public void successfulRegistration() throws InterruptedException {
         String username = "Veloje";
         String email = "bakipo3967@jrvps.com";
         String password = "a";
@@ -36,9 +36,14 @@ public class TestRegistration extends TestingSetup {
         registration.enterPassword(password);
         registration.acceptPrivacyPolicy(accept);
         registration.clickOnRegistrationButton();
-        boolean actual = registration.getMessage();
 
-        Assertions.assertTrue(actual);
+        Thread.sleep(1000);
+        boolean messageDisplayed = registration.isMessageDisplayed();
+        String expectedMessage = "Az aktiváláshoz szükséges azonosító linket elküldtük a megadott e-mail címre.\n" +
+                "Az aktiváláshoz kattints rá, vagy másold a böngésző címsorába.";
+        String actualMessage = registration.getMessage();
+        Assertions.assertTrue(messageDisplayed);
+        Assertions.assertEquals(expectedMessage, actualMessage);
 
         Allure.addAttachment("Képernyőkép a sikeres regisztrációról", new ByteArrayInputStream(((TakesScreenshot) webDriver).getScreenshotAs(OutputType.BYTES)));
     }
@@ -63,11 +68,11 @@ public class TestRegistration extends TestingSetup {
 
         //check username error message
         String expectedUsernameMessage = "A(z) " + username + " felhasználónév már foglalt.";
-        Assertions.assertEquals(expectedUsernameMessage,actualUsernameErrorMessage);
+        Assertions.assertEquals(expectedUsernameMessage, actualUsernameErrorMessage);
 
         //check email error message
         String expectedEmailMessage = "A(z) " + email + " e-mail címmel már regisztráltak.";
-        Assertions.assertEquals(expectedEmailMessage,actualEmailErrorMessage);
+        Assertions.assertEquals(expectedEmailMessage, actualEmailErrorMessage);
 
         Allure.addAttachment("Képernyőkép a sikertelen regisztrációról", new ByteArrayInputStream(((TakesScreenshot) webDriver).getScreenshotAs(OutputType.BYTES)));
     }

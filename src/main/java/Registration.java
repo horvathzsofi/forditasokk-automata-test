@@ -42,8 +42,12 @@ public class Registration extends PageBase{
         webDriver.findElement(registrationButton).click();
     }
 
-    public boolean getMessage(){
+    public boolean isMessageDisplayed(){
         return webDriver.findElement(message).isDisplayed();
+    }
+
+    public String getMessage(){
+        return webDriver.findElement(message).getText();
     }
 
     public String getUsernameErrorMessage(){
