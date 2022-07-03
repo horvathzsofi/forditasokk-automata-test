@@ -10,11 +10,14 @@ public class TestMusics extends TestingSetup {
         musics = new Musics(webDriver);
     }
 
+    @Disabled
     @Test
     public void addNewMusic(){
 
     }
 
+
+    @Disabled
     @Test
     public void modifyMusicDetails(){
         

@@ -16,8 +16,8 @@ public class TestHome extends TestingSetup{
      * 3. Verify that the latest album is the first on the list
      */
 
+    @Disabled
     @Test
     public void collectDataFromHomepage(){
-
     }
 }

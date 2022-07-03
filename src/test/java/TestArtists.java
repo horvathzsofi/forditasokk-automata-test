@@ -24,6 +24,7 @@ public class TestArtists extends TestingSetup {
      */
 
 
+    @Disabled
     @ParameterizedTest
     @CsvFileSource(resources = "/artists.csv", numLinesToSkip = 1)
     public void addArtistsRepeatedly(String artist, String entertainment) {

@@ -19,6 +19,7 @@ public class TestEntertainments extends TestingSetup {
      * Predefined entertainments: Big Hit, Choeun, Cube, Dream Tea, Fantagio, FNC, Hyeyoom, JTM, JYP, N\A, Pledis, RBW Entertainment, SM, YG
      */
 
+    @Disabled
     @Test
     public void verifyThatAllEntertainmentsAreDisplayed(){
 

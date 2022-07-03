@@ -20,6 +20,7 @@ public class TestAlbums extends TestingSetup {
      * 5. Check it if the title is not on the previously saved list
      */
 
+    @Disabled
     @Test
     public void checkingPaginationNextButton(){
 
