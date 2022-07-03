@@ -12,7 +12,7 @@ import org.openqa.selenium.TakesScreenshot;
 
 import java.io.ByteArrayInputStream;
 
-@Feature("Login")
+@Feature("Bejelentkezés")
 public class TestLogin extends TestingSetup {
     Login login = null;
 
@@ -30,7 +30,7 @@ public class TestLogin extends TestingSetup {
 
     @Test
     @DisplayName("Sikertelen bejelentkezés")
-    @Description("Bejelentkezés tesztelése hibás belépési adatokkal")
+    @Description("Bejelentkezés tesztelése hibás belépési adatokkal (DT-8 alapján)")
     @Severity(SeverityLevel.CRITICAL)
     public void correctFailedLoginMessage(){
         String username = "veloje";
@@ -45,7 +45,7 @@ public class TestLogin extends TestingSetup {
 
     @Test
     @DisplayName("Bejelentkezés inaktív fiókba")
-    @Description("Bejelentkezés valós belépési adatokkal, nem aktivált fiókba")
+    @Description("Bejelentkezés valós belépési adatokkal, nem aktivált fiókba (DT-3 alapján)")
     @Severity(SeverityLevel.BLOCKER)
     public void loginWithoutActivatingUserProfile(){
         String username = "Veloje";
@@ -61,7 +61,7 @@ public class TestLogin extends TestingSetup {
     // in this case a preregistered user login will happen, so I could show you the login automation successfully
     @Test
     @DisplayName("Sikeres bejelentkezés")
-    @Description("Bejelentkezés tesztelése valós belépési adatokkal")
+    @Description("Bejelentkezés tesztelése valós belépési adatokkal (DT-1 alapján)")
     @Severity(SeverityLevel.CRITICAL)
     public void successfulLogin() throws InterruptedException {
         String username = "felhasznalo";

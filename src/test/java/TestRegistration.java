@@ -12,7 +12,7 @@ import org.openqa.selenium.TakesScreenshot;
 
 import java.io.ByteArrayInputStream;
 
-@Feature("Registration")
+@Feature("Regisztráció")
 public class TestRegistration extends TestingSetup {
     Registration registration = null;
 
