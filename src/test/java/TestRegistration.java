@@ -1,3 +1,4 @@
+import io.github.bonigarcia.wdm.WebDriverManager;
 import io.qameta.allure.Allure;
 import io.qameta.allure.Description;
 import io.qameta.allure.Feature;
@@ -10,23 +11,44 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 
 import java.io.ByteArrayInputStream;
+import java.util.concurrent.TimeUnit;
 
 @Feature("Registration")
-public class TestRegistration extends TestingSetup {
+public class TestRegistration {
     Registration registration = null;
 
-    @BeforeEach
+  /*  @BeforeEach
     public void createRegistration() {
         registration = new Registration(webDriver);
     }
+*/
 
     @Test
     @DisplayName("Sikeres regisztráció")
     @Description("Sikeres regisztráció, mivel mindegyik beviteli mező valid adatot tartalmaz (DT-1 alapján)")
     @Severity(SeverityLevel.CRITICAL)
     public void successfulRegistration() throws InterruptedException {
+        WebDriverManager.chromedriver().setup();
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--no-sandbox");
+        options.addArguments("--incognito");
+        options.addArguments("--disable-dev-shm-usage");
+        options.addArguments("--disable-notifications");
+        options.addArguments("--disable-extensions");
+        options.addArguments("--headless");
+        options.addArguments("--window-size=1920,1080");
+        options.addArguments("start-maximized");
+
+        var webDriver = new ChromeDriver(options);
+        webDriver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+        webDriver.manage().window().maximize();
+
+        registration = new Registration(webDriver);
+
         String username = "bakipo3967";
         String email = "bakipo3967@jrvps.com";
         String password = "a";
@@ -49,8 +71,11 @@ public class TestRegistration extends TestingSetup {
         Assertions.assertEquals(expectedMessage, actualMessage);
 
         Allure.addAttachment("Képernyőkép a sikeres regisztrációról", new ByteArrayInputStream(((TakesScreenshot) webDriver).getScreenshotAs(OutputType.BYTES)));
+
+        webDriver.quit();
     }
 
+    /*
     @Test
     @DisplayName("Sikertelen regisztráció")
     @Description("Már regisztrált felhasználónévvel és email címmel történő regisztráció a DT-12 alapján")
@@ -80,4 +105,6 @@ public class TestRegistration extends TestingSetup {
 
         Allure.addAttachment("Képernyőkép a sikertelen regisztrációról", new ByteArrayInputStream(((TakesScreenshot) webDriver).getScreenshotAs(OutputType.BYTES)));
     }
+
+     */
 }
