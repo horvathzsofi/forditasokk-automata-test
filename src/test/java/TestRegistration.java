@@ -25,7 +25,7 @@ public class TestRegistration extends TestingSetup {
     @DisplayName("Sikeres regisztráció")
     @Description("Sikeres regisztráció, mivel mindegyik beviteli mező valid adatot tartalmaz (DT-1 alapján)")
     @Severity(SeverityLevel.CRITICAL)
-    public void successfulRegistration() {
+    public void successfulRegistration() throws InterruptedException {
         String username = "Veloje";
         String email = "bakipo3967@jrvps.com";
         String password = "a";
@@ -36,6 +36,7 @@ public class TestRegistration extends TestingSetup {
         registration.enterPassword(password);
         registration.acceptPrivacyPolicy(accept);
         registration.clickOnRegistrationButton();
+        Thread.sleep(500);
         String actual = registration.getMessage();
         String expected = "Az aktiváláshoz szükséges azonosító linket elküldtük a megadott e-mail címre.\n" +
                 "Az aktiváláshoz kattints rá, vagy másold a böngésző címsorába.";
