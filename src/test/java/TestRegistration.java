@@ -5,6 +5,7 @@ import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.OutputType;
@@ -37,7 +38,7 @@ public class TestRegistration extends TestingSetup {
         registration.acceptPrivacyPolicy(accept);
         registration.clickOnRegistrationButton();
 
-        Thread.sleep(2000);
+        Thread.sleep(5000);
         Allure.addAttachment("Képernyőkép a sikeres regisztrációról", new ByteArrayInputStream(((TakesScreenshot) webDriver).getScreenshotAs(OutputType.BYTES)));
         boolean messageDisplayed = registration.isMessageDisplayed();
         String expectedMessage = "Az aktiváláshoz szükséges azonosító linket elküldtük a megadott e-mail címre.\n" +
@@ -54,6 +55,7 @@ public class TestRegistration extends TestingSetup {
     @DisplayName("Sikertelen regisztráció")
     @Description("Már regisztrált felhasználónévvel és email címmel történő regisztráció a DT-12 alapján")
     @Severity(SeverityLevel.CRITICAL)
+    @Disabled
     public void unsuccessfulRegistration() {
         String username = "felhasznalo";
         String email = "demodezso@localhost";

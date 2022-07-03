@@ -1,4 +1,5 @@
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
 
@@ -21,9 +22,10 @@ public class TestArtists extends TestingSetup{
      * 7. Repeat the test steps from step 2 until there is no test data
      */
 
+    /*
     @ParameterizedTest
     @CsvFileSource(resources = "/artists.csv", numLinesToSkip = 1)
     public void addArtistsRepeatedly(String artist, String entertainment){
-
     }
+     */
 }

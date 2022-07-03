@@ -1,4 +1,5 @@
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 public class TestHome extends TestingSetup{
@@ -16,6 +17,7 @@ public class TestHome extends TestingSetup{
      */
 
     @Test
+    @Disabled
     public void collectDataFromHomepage(){
 
     }

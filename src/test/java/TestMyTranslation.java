@@ -1,4 +1,5 @@
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 public class TestMyTranslation extends TestingSetup{
@@ -11,6 +12,7 @@ public class TestMyTranslation extends TestingSetup{
 
 
     @Test
+    @Disabled
     public void deleteMyTranslation(){
 
     }

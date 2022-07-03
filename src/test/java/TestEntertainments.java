@@ -1,4 +1,5 @@
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 public class TestEntertainments extends TestingSetup {
@@ -19,6 +20,7 @@ public class TestEntertainments extends TestingSetup {
      */
 
     @Test
+    @Disabled
     public void verifyThatAllEntertainmentsAreDisplayed(){
 
     }

@@ -1,5 +1,6 @@
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 public class TestLogin extends TestingSetup {
@@ -18,6 +19,7 @@ public class TestLogin extends TestingSetup {
     }
 
     @Test
+    @Disabled
     public void correctFailedLoginMessage(){
         fillForm("veloje", "asd");
         String actualMessage = login.getErrorMessage();
@@ -26,6 +28,7 @@ public class TestLogin extends TestingSetup {
     }
 
     @Test
+    @Disabled
     public void displayFailedLoginMessage(){
         String username = "Veloje";
         String password = "a";
