@@ -3,6 +3,7 @@ import io.qameta.allure.Description;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -33,6 +34,9 @@ public class TestMyTranslation extends TestingSetup{
         String[] beforeDeletingTranslation = myTranslations.getMyTranslations();
         myTranslations.clickOnDeleteLinkFor("Delilah");
         String[] afterDeletingTranslation = myTranslations.getMyTranslations();
+
+        Assertions.assertNotEquals(beforeDeletingTranslation.toString(), afterDeletingTranslation.toString());
+
         Allure.addAttachment("Képernyőkép a törlés utáni állapotról", new ByteArrayInputStream(((TakesScreenshot) webDriver).getScreenshotAs(OutputType.BYTES)));
     }
 }
