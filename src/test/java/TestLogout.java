@@ -6,6 +6,7 @@ import io.qameta.allure.SeverityLevel;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -15,10 +16,12 @@ import java.io.ByteArrayInputStream;
 @Feature("Kijelentkezés")
 public class TestLogout extends TestingSetup{
     Logout logout = null;
+    Login login = null;
 
     @BeforeEach
     public void createLogout(){
         logout = new Logout(webDriver);
+        login = new Login(webDriver);
     }
 
     @Test
@@ -26,8 +29,13 @@ public class TestLogout extends TestingSetup{
     @Description("Kijelentkezés felhasználói fiókból")
     @Severity(SeverityLevel.CRITICAL)
     public void successfulLogout() throws InterruptedException {
-        TestLogin login = new TestLogin();
-        login.successfulLogin();
+        String username = "felhasznalo";
+        String password = "asd";
+
+        login.navigateToPage();
+        login.enterUsername(username);
+        login.enterPassword(password);
+        login.clickOnButton();
         logout.navigateTo();
         String[] beforeLogoutUserMenu = logout.getUserMenuItems();
         Allure.addAttachment("Képernyőkép a kijelentkezés előtti állapotról", new ByteArrayInputStream(((TakesScreenshot) webDriver).getScreenshotAs(OutputType.BYTES)));
@@ -38,5 +46,4 @@ public class TestLogout extends TestingSetup{
 
         Allure.addAttachment("Képernyőkép a kijelentkezés előtti állapotról", new ByteArrayInputStream(((TakesScreenshot) webDriver).getScreenshotAs(OutputType.BYTES)));
     }
-
 }
