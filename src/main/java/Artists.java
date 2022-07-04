@@ -21,12 +21,13 @@ public class Artists extends PageBase{
         webDriver.navigate().to(url);
     }
 
-    public List<WebElement> getAllArtist(){
-        return webDriver.findElements(artists);
-    }
-
-    public String getArtistName(WebElement element){
-        return element.getText();
+    public String[] getAllArtist(){
+        List<WebElement> artistElements = webDriver.findElements(artists);
+        String[] artistNames = new String[artistElements.size()];
+        for (int i = 0; i <artistElements.size() ; i++) {
+            artistNames[i] = artistElements.get(i).getText();
+        }
+        return artistNames;
     }
 
     public void navigateToAddNewArtistPage(){
