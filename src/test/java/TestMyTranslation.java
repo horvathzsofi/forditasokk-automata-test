@@ -15,10 +15,12 @@ import java.io.ByteArrayInputStream;
 @Feature("Felhasználó által hozzáadtott fordítás törlése")
 public class TestMyTranslation extends TestingSetup{
     MyTranslations myTranslations = null;
+    Login login = null;
 
     @BeforeEach
     public void createMyTranslation(){
         myTranslations = new MyTranslations(webDriver);
+        login = new Login(webDriver);
     }
 
 
@@ -27,8 +29,13 @@ public class TestMyTranslation extends TestingSetup{
     @Description("Felhasználó által hozzáadott fordítás törlése")
     @Severity(SeverityLevel.NORMAL)
     public void deleteMyTranslation() throws InterruptedException {
-        TestLogin login = new TestLogin();
-        login.successfulLogin();
+        String username = "felhasznalo";
+        String password = "asd";
+
+        login.navigateToPage();
+        login.enterUsername(username);
+        login.enterPassword(password);
+        login.clickOnButton();
         myTranslations.navigateToPage();
         Allure.addAttachment("Képernyőkép a törlés előtti állapotról", new ByteArrayInputStream(((TakesScreenshot) webDriver).getScreenshotAs(OutputType.BYTES)));
         String[] beforeDeletingTranslation = myTranslations.getMyTranslations();
