@@ -1,3 +1,4 @@
+import org.bouncycastle.x509.PKIXAttrCertChecker;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -18,17 +19,27 @@ public class Albums extends PageBase {
         webDriver.navigate().to(url);
     }
 
-    public List<WebElement> getAlbumTitleWebElements(){
-        return webDriver.findElements(albumTitle);
+    public String[] getAlbumTitles(){
+        List<WebElement> albumElements = webDriver.findElements(albumTitle);
+        String[] albumTitles = new String[albumElements.size()];
+
+        for (int i = 0; i < albumElements.size(); i++) {
+            albumTitles[i] = albumElements.get(i).getText();
+        }
+
+        return albumTitles;
     }
 
-    public String getAlbumTitle(WebElement albumWebElement){
-        return albumWebElement.getText();
+    public String getFirstAlbumTitleOnThePage(){
+        return webDriver.findElement(card).getText();
     }
 
     public void clickOnNextPageButton(){
         webDriver.findElement(nextPageButton).click();
     }
 
+    public boolean isNextPageButtonDisplayed(){
+        return webDriver.findElement(nextPageButton).isDisplayed();
+    }
 
 }
