@@ -1,24 +1,54 @@
-# Automated tests for FordításokK
+# Automata tesztek a FordításokK weboldalhoz
 
-## About
-FordításokK is a PHP based website about South Korean pop culture that could be freely edited by logged in users.
-FordításokK is a pun with translations and shock words in Hungarian. The website is used for adding translations for K-pop songs.
+## Az oldalról
+A FordításokK egy PHP alapú weboldal Dél-Korea pop kultúrájáról, amely szabadon szerkeszthető minden bejelentkezett felhasználó által.
+Az oldal nevének eredete egy szó játék a fordítások és a sokk szóval. 
+Az oldal a koreai dalok fordításának hozzáadhatóságára fókuszál.
 
-Link to the tested website: [FordításokK](http://forditasokk.probaljaki.hu/)
+## Követelmények
+- [x] Regisztráció
+- [x] Bejelentkezés
+- [x] Adatkezelési nyilatkozat használata
+- [x] Adatok listázása
+- [x] Több oldalas lista bejárása
+- [ ] Új adat bevitel
+- [x] Ismételt és sorozatos adatbevitel adatforrásból
+- [ ] Meglévő adat módosítás
+- [x] Adat vagy adatok törlése
+- [ ] Adatok lementése felületről
+- [x] Kijelentkezés
 
-## In scope
-- [ ] Registration
-- [x] Login
-- [ ] Accepting Privacy Policy (on page "Regisztráció")
-- [ ] Listing data (on page "Kiadók")
-- [ ] Pagination (on page "Albumok")
-- [ ] Entering new data (on page "Zenék")
-- [ ] Entering data repeatedly from data source (on page "Előadók")
-- [ ] Modifying existing data (on page "Zenék")
-- [ ] Deleting data (on page "Fordításaim")
-- [ ] Save data from website (on page "Kezdőlap")
-- [ ] Logout
+## Elérhetőségi linkek
+A tesztelt oldal elérhetősége: [FordításokK](http://forditasokk.probaljaki.hu/)
 
-## Automated test report
-Automated test report is available on [Allure](https://horvathzsofi.github.io/forditasokk-automata-test/).
+Projekt GitHub repository-ja: [forditasokk-automata-test](https://github.com/horvathzsofi/forditasokk-automata-test) 
 
+Tesztesetek elérhetősége: [Tesztesetek](https://docs.google.com/spreadsheets/d/191MBhlIjzQ8oI81xvtqpH7dKkrOclZ86t2Y7rggFqs8/edit?usp=sharing)
+
+Az automatizált teszt report elérhetősége: [Allure](https://horvathzsofi.github.io/forditasokk-automata-test/).
+
+## Tesztek futtatása
+### Lokálisan
+#### Előfeltétel
+A `git clone` paranccsal töltse le a gépére a projektet.
+ ```
+$ git clone https://github.com/horvathzsofi/forditasokk-automata-test.git
+```    
+#### Lehetőségek
+1. Valamilyen IDE segítségével (pl.: IntelliJ IDEA) nyissa meg a projektet és futtassa a teszteket.
+2. Tesztek futtatása parancsorból
+```
+mvn test
+```
+   *A parancs abban az esetben működik, amennyiben átnavigált a projekt mappájába.*
+     
+### GitHub action-ön keresztül
+#### Előfeltétel
+Jogosultság a projekthez.
+#### Lehetőségek
+1. Már lefutott workflow-k újra futtatásával
+2. Repository frissítésével
+```
+$ git push origin main
+```
+*A `git push` parancs estén újrafuttatja a teszteket, amennyiben a main branchre lettek feltöltve.*
