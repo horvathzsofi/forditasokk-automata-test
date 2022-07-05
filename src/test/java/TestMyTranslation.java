@@ -28,7 +28,7 @@ public class TestMyTranslation extends TestingSetup{
     @DisplayName("Felhasználó által hozzáadott fordítás törlése")
     @Description("Felhasználó által hozzáadott fordítás törlése")
     @Severity(SeverityLevel.NORMAL)
-    public void deleteMyTranslation() throws InterruptedException {
+    public void deleteMyTranslation(){
         String username = "felhasznalo";
         String password = "asd";
 

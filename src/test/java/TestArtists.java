@@ -11,7 +11,7 @@ import org.junit.jupiter.params.provider.CsvFileSource;
 import java.util.Arrays;
 
 
-@Feature("")
+@Feature("Előadó hozzáadása külső adatforrásból")
 public class TestArtists extends TestingSetup {
     Artists artists = null;
     Login login = null;
@@ -23,7 +23,7 @@ public class TestArtists extends TestingSetup {
     }
 
     /**
-     * TODO: Testing entering data repeatedly from data source on "Előadók" (Artist.Artists) page
+     * Testing entering data repeatedly from external data source on "Előadók" (Artists) page
      * Test steps:
      * 1. Navigate to website
      * 2. Click on "Előadó hozzáadása" (Add artist) link

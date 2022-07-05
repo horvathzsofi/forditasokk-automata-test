@@ -24,6 +24,7 @@ public class TestRegistration extends TestingSetup {
         registration = new Registration(webDriver);
     }
 
+    // this test is disabled: it will show error message with the current test data, because with this data there is a registered user already
     @Disabled
     @Test
     @DisplayName("Sikeres regisztráció")

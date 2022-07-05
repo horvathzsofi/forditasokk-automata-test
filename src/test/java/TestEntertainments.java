@@ -18,7 +18,7 @@ public class TestEntertainments extends TestingSetup {
     }
 
     /**
-     * TODO:
+     * Verify that all entertainments are displayed on page "Kiadók" (Entertainments)
      * Test steps:
      * 1. Navigate to the website
      * 2. Count entertainments
