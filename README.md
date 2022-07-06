@@ -2,7 +2,7 @@
 
 ## Az oldalról
 A FordításokK egy PHP alapú weboldal Dél-Korea pop kultúrájáról, amely szabadon szerkeszthető minden bejelentkezett felhasználó által.
-Az oldal nevének eredete egy szó játék a fordítások és a sokk szóval. 
+Az oldal nevének eredete egy szó játék a fordítások és a sokk szavakkal. 
 Az oldal a koreai dalok fordításának hozzáadhatóságára fókuszál.
 
 ## Követelmények
@@ -11,11 +11,11 @@ Az oldal a koreai dalok fordításának hozzáadhatóságára fókuszál.
 - [x] Adatkezelési nyilatkozat használata
 - [x] Adatok listázása
 - [x] Több oldalas lista bejárása
-- [ ] Új adat bevitel
+- [x] Új adat bevitel
 - [x] Ismételt és sorozatos adatbevitel adatforrásból
-- [ ] Meglévő adat módosítás
+- [x] Meglévő adat módosítás
 - [x] Adat vagy adatok törlése
-- [ ] Adatok lementése felületről
+- [x] Adatok lementése felületről
 - [x] Kijelentkezés
 
 ## Elérhetőségi linkek
@@ -24,6 +24,7 @@ A tesztelt oldal elérhetősége: [FordításokK](http://forditasokk.probaljaki.
 Projekt GitHub repository-ja: [forditasokk-automata-test](https://github.com/horvathzsofi/forditasokk-automata-test) 
 
 Tesztesetek elérhetősége: [Tesztesetek](https://docs.google.com/spreadsheets/d/191MBhlIjzQ8oI81xvtqpH7dKkrOclZ86t2Y7rggFqs8/edit?usp=sharing)
+Vagy pedig a projekt gyökerében.
 
 Az automatizált teszt report elérhetősége: [Allure](https://horvathzsofi.github.io/forditasokk-automata-test/).
 
