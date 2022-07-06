@@ -1,3 +1,5 @@
+import io.qameta.allure.Allure;
+import io.qameta.allure.Attachment;
 import io.qameta.allure.Description;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Severity;
@@ -6,6 +8,15 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 
 @Feature("Adatok lementése felületről")
@@ -47,6 +58,13 @@ public class TestHome extends TestingSetup {
 
         String result = fileHandler.readFile(filePath);
         String[] albumTitlesFromFile = result.split("\n");
+
+        Path content = Paths.get(filePath);
+        try (InputStream is = Files.newInputStream(content)) {
+            Allure.addAttachment("Albumok listája", is);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         Assertions.assertEquals(actualAlbumsOnHomePage.length, albumTitlesFromFile.length);
         Assertions.assertArrayEquals(expectedAlbumTitleList, albumTitlesFromFile);
