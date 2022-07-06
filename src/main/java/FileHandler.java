@@ -44,4 +44,14 @@ public class FileHandler {
             System.out.println("An error has occurred.");
         }
     }
+
+    public void createOutputDirectory(String filePath){
+        File f = new File(filePath);
+        if (f.mkdir()) {
+            System.out.println("Directory is created");
+        }
+        else {
+            System.out.println("Directory cannot be created");
+        }
+    }
 }

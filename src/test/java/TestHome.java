@@ -36,7 +36,9 @@ public class TestHome extends TestingSetup {
     @Description("Az oldalon szereplő 10 album címének kigyűjtése egy TXT kiterjesztésű fájlba a kezdőlapról")
     @Severity(SeverityLevel.MINOR)
     public void collectAlbumTitlesFromHomepage() {
+        String directoryPath = "src/test/output";
         String filePath = "src/test/output/albumsOnHomePage.txt";
+        fileHandler.createOutputDirectory(directoryPath);
         fileHandler.deleteFile(filePath);
         String[] expectedAlbumTitleList = {
                 "Planet Nine : Alter Ego",
