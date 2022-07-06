@@ -17,15 +17,6 @@ public class TestEntertainments extends TestingSetup {
         entertainments = new Entertainments(webDriver);
     }
 
-    /**
-     * Verify that all entertainments are displayed on page "Kiadók" (Entertainments)
-     * Test steps:
-     * 1. Navigate to the website
-     * 2. Count entertainments
-     * 3. Verify that all the predefined entertainments are displayed on the page
-     */
-
-
     @Test
     @DisplayName("Kiadók nevének kilistázása")
     @Description("Az összes kiadó nevének kilistázása")

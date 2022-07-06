@@ -8,7 +8,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 
-@Feature("Adatok lementése a felületről")
+@Feature("Adatok lementése felületről")
 public class TestHome extends TestingSetup {
     Home home = null;
     FileHandler fileHandler = null;
@@ -18,13 +18,6 @@ public class TestHome extends TestingSetup {
         home = new Home(webDriver);
         fileHandler = new FileHandler();
     }
-
-    /**
-     * Collect albums and their release date from homepage into txt file
-     * 1. Navigate to the website
-     * 2. Collect albums' title and release date into a txt file
-     * 3. Verify that the latest album is the first on the list
-     */
 
 
     @Test

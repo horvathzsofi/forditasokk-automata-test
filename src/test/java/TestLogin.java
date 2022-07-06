@@ -31,7 +31,7 @@ public class TestLogin extends TestingSetup {
     }
 
     @Test
-    @DisplayName("Sikertelen bejelentkezés")
+    @DisplayName("Sikertelen bejelentkezés: megfelelő üzenet sikertelen bejelentkezés esetén")
     @Description("Bejelentkezés tesztelése hibás belépési adatokkal (DT-8 alapján)")
     @Severity(SeverityLevel.CRITICAL)
     public void correctFailedLoginMessage(){
