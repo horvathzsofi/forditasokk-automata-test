@@ -11,7 +11,7 @@ import org.junit.jupiter.params.provider.CsvFileSource;
 import java.util.Arrays;
 
 
-@Feature("Előadó hozzáadása külső adatforrásból")
+@Feature("Ismételt és sorozatos adatbevitel adatforrásból")
 public class TestArtists extends TestingSetup {
     Artists artists = null;
     Login login = null;
@@ -19,28 +19,9 @@ public class TestArtists extends TestingSetup {
     @BeforeEach
     public void createArtists() {
         artists = new Artists(webDriver);
+
+        // successful login action
         login = new Login(webDriver);
-    }
-
-    /**
-     * Testing entering data repeatedly from external data source on "Előadók" (Artists) page
-     * Test steps:
-     * 1. Navigate to website
-     * 2. Click on "Előadó hozzáadása" (Add artist) link
-     * 3. Enter "Előadó neve" (Artist name)
-     * 4. Enter "Kiadó neve" (Entertainment name)
-     * 5. Click on "Előadó hozzáadása" (Add artist) button
-     * 6. Verify that you have successfully added a new artist
-     * 7. Repeat the test steps from step 2 until there is no test data
-     */
-
-
-    @ParameterizedTest
-    @DisplayName("Ismételt adat bevitel külső adataforrásból")
-    @Description("Előre meghatározott előadók hozzáadása csv kiterjesztésű fájlból")
-    @Severity(SeverityLevel.NORMAL)
-    @CsvFileSource(resources = "/artists.csv", numLinesToSkip = 1)
-    public void addArtistsRepeatedly(String artist, String entertainment) {
         String username = "felhasznalo";
         String password = "asd";
 
@@ -49,6 +30,14 @@ public class TestArtists extends TestingSetup {
         login.enterPassword(password);
         login.clickOnButton();
 
+    }
+
+    @ParameterizedTest
+    @DisplayName("Előadók sorozatos hozzáadása az adatbázishoz külső adatforrásból")
+    @Description("Előre meghatározott előadók hozzáadása csv kiterjesztésű fájlból")
+    @Severity(SeverityLevel.NORMAL)
+    @CsvFileSource(resources = "/artists.csv", numLinesToSkip = 1)
+    public void addArtistsRepeatedly(String artist, String entertainment) {
         artists.navigateTo();
         String[] artistNamesBeforeAddingNewOne = artists.getAllArtist();
         artists.navigateToAddNewArtistPage();

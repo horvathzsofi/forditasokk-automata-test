@@ -12,7 +12,7 @@ import org.openqa.selenium.TakesScreenshot;
 
 import java.io.ByteArrayInputStream;
 
-@Feature("Felhasználó által hozzáadtott fordítás törlése")
+@Feature("Adat vagy adatok törlése")
 public class TestMyTranslation extends TestingSetup{
     MyTranslations myTranslations = null;
     Login login = null;
@@ -20,7 +20,16 @@ public class TestMyTranslation extends TestingSetup{
     @BeforeEach
     public void createMyTranslation(){
         myTranslations = new MyTranslations(webDriver);
+
+        // successful login action
         login = new Login(webDriver);
+        String username = "felhasznalo";
+        String password = "asd";
+
+        login.navigateToPage();
+        login.enterUsername(username);
+        login.enterPassword(password);
+        login.clickOnButton();
     }
 
 
@@ -29,13 +38,6 @@ public class TestMyTranslation extends TestingSetup{
     @Description("Felhasználó által hozzáadott fordítás törlése")
     @Severity(SeverityLevel.NORMAL)
     public void deleteMyTranslation(){
-        String username = "felhasznalo";
-        String password = "asd";
-
-        login.navigateToPage();
-        login.enterUsername(username);
-        login.enterPassword(password);
-        login.clickOnButton();
         myTranslations.navigateToPage();
         Allure.addAttachment("Képernyőkép a törlés előtti állapotról", new ByteArrayInputStream(((TakesScreenshot) webDriver).getScreenshotAs(OutputType.BYTES)));
         String[] beforeDeletingTranslation = myTranslations.getMyTranslations();

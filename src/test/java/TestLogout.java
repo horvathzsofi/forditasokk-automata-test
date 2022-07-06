@@ -20,14 +20,9 @@ public class TestLogout extends TestingSetup{
     @BeforeEach
     public void createLogout(){
         logout = new Logout(webDriver);
-        login = new Login(webDriver);
-    }
 
-    @Test
-    @DisplayName("Kijelentkezés tesztelése")
-    @Description("Kijelentkezés felhasználói fiókból")
-    @Severity(SeverityLevel.CRITICAL)
-    public void successfulLogout() throws InterruptedException {
+        // successful login action
+        login = new Login(webDriver);
         String username = "felhasznalo";
         String password = "asd";
 
@@ -35,6 +30,13 @@ public class TestLogout extends TestingSetup{
         login.enterUsername(username);
         login.enterPassword(password);
         login.clickOnButton();
+    }
+
+    @Test
+    @DisplayName("Kijelentkezés tesztelése")
+    @Description("Kijelentkezés felhasználói fiókból")
+    @Severity(SeverityLevel.CRITICAL)
+    public void successfulLogout(){
         logout.navigateTo();
         String[] beforeLogoutUserMenu = logout.getUserMenuItems();
         Allure.addAttachment("Képernyőkép a kijelentkezés előtti állapotról", new ByteArrayInputStream(((TakesScreenshot) webDriver).getScreenshotAs(OutputType.BYTES)));

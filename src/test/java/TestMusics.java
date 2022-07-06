@@ -7,7 +7,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-@Feature("Műveletek a Zene oldalon")
+@Feature("Új adat bevitel; Meglévő adat módosítása")
 public class TestMusics extends TestingSetup {
     Musics musics = null;
     Login login = null;
@@ -15,25 +15,27 @@ public class TestMusics extends TestingSetup {
     @BeforeEach
     public void createMusic() {
         musics = new Musics(webDriver);
-        login = new Login(webDriver);
-    }
 
-    @Test
-    @DisplayName("Új zene hozzáadása az adatbázishoz")
-    @Description("Új zene hozzáadása az adatbázishoz")
-    @Severity(SeverityLevel.NORMAL)
-    public void addNewMusic() {
+        // successful login action
+        login = new Login(webDriver);
         String username = "felhasznalo";
         String password = "asd";
-        String artistName = "ONEWE";
-        String albumTitle = "Planet Nine : Alter Ego";
-        String songTitle = "Rain To Be";
-        boolean isTitleSong = true;
 
         login.navigateToPage();
         login.enterUsername(username);
         login.enterPassword(password);
         login.clickOnButton();
+    }
+
+    @Test
+    @DisplayName("Műveletek: Új zene hozzáadása")
+    @Description("Új zene hozzáadása az adatbázishoz")
+    @Severity(SeverityLevel.NORMAL)
+    public void addNewMusic() {
+        String artistName = "ONEWE";
+        String albumTitle = "Planet Nine : Alter Ego";
+        String songTitle = "Rain To Be";
+        boolean isTitleSong = true;
 
         musics.navigateToPage();
         int numberOfMusicsBeforeAddingNewOne = musics.getMusicCards().size();
@@ -51,19 +53,12 @@ public class TestMusics extends TestingSetup {
 
 
     @Test
-    @DisplayName("Meglévő adat módosítása")
-    @Description("Meglévő adat módosítása")
+    @DisplayName("Műveletek: zene adatainak módosítása")
+    @Description("Meglévő zene adatainak módosítása")
     @Severity(SeverityLevel.NORMAL)
     public void modifyMusicDetails() {
-        String username = "felhasznalo";
-        String password = "asd";
         String oldSongTitle = "Don't Wanna Cry";
         String newSongTitle = "Baby don't cry";
-
-        login.navigateToPage();
-        login.enterUsername(username);
-        login.enterPassword(password);
-        login.clickOnButton();
 
         musics.navigateToPage();
         int numberOfMusicsBeforeUpdating = musics.getMusicCards().size();
