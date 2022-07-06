@@ -4,6 +4,7 @@ import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
@@ -32,6 +33,8 @@ public class TestArtists extends TestingSetup {
 
     }
 
+    // the content of the csv file was already added
+    @Disabled
     @ParameterizedTest
     @DisplayName("Előadók sorozatos hozzáadása az adatbázishoz külső adatforrásból")
     @Description("Előre meghatározott előadók hozzáadása csv kiterjesztésű fájlból")
